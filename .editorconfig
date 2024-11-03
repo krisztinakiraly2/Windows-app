@@ -11,3 +11,9 @@ dotnet_diagnostic.IDE0090.severity = none
 
 # IDE0044: Add readonly modifier
 dotnet_diagnostic.IDE0044.severity = none
+
+# CA1310: Specify StringComparison for correctness
+dotnet_diagnostic.CA1310.severity = none
+
+# IDE0057: Use range operator
+dotnet_diagnostic.IDE0057.severity = none

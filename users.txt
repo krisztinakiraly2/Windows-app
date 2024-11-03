@@ -1,0 +1,21 @@
+name: User
+email: user@gmail.com
+username: user
+password: 1234
+
+name: Name
+email: Email
+username: 
+password: Password
+
+name: Krisztina
+email: krisztinakiraly2@gmail.com
+username: krisztina
+password: 123
+
+
+name: Peti
+email: peti@gmail.com
+username: peti
+password: 123456
+
