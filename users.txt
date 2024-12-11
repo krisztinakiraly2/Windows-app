@@ -13,7 +13,6 @@ email: krisztinakiraly2@gmail.com
 username: krisztina
 password: 123
 
-
 name: Peti
 email: peti@gmail.com
 username: peti

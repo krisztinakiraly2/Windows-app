@@ -1,3 +1,4 @@
+using Windows.Devices.Pwm;
 using WindowsApp;
 
 namespace WindowsApp
@@ -18,7 +19,9 @@ namespace WindowsApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            _ = new App();
+            
+            USB_Comm usbComm = new USB_Comm();
+            _ = new App(usbComm);
         }
     }
 }

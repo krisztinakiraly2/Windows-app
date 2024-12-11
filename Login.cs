@@ -41,8 +41,6 @@ namespace WindowsApp
                 return;
             }
 
-            // TODO: look for the login data
-            // Get the name and email
             string email = (email_li.Text.Contains('@')) ? email_li.Text : string.Empty;
             string username = (email == string.Empty) ? email_li.Text : string.Empty;
             string password;
@@ -52,7 +50,6 @@ namespace WindowsApp
 
             string[] lines = File.ReadAllLines(usersFilePath);
             int lineIndex = -1;
-            // "name: "+name_su.Text+"\nemail: "+email_su.Text+"\nusername: "+username_su.Text +"\npassword: "+password_su.Text +"\n\n"
 
             if (email == string.Empty)
             {
@@ -121,9 +118,10 @@ namespace WindowsApp
 
                         using StreamWriter writer = new StreamWriter(defaultUserFilePath);
                         writer.Write("email: " + email + "\n");
+                        writer.Flush();
+                        writer.Close();
                     }
 
-                    // invoke the start of the app and pass the username
                     LoginSuccessful?.Invoke(email);
                 }
             }
@@ -215,6 +213,8 @@ namespace WindowsApp
             using (StreamWriter writer = new StreamWriter(filePath, append: true))
             {
                 writer.Write("name: "+name_su.Text+"\nemail: "+email_su.Text+"\nusername: "+username_su.Text +"\npassword: "+password_su.Text +"\n\n");
+                writer.Flush();
+                writer.Close();
             }
 
             string folderPath = Program.projectFolderPath + "\\user_data";

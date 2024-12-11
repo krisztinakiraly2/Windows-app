@@ -10,13 +10,13 @@ namespace WindowsApp
         private Login loginForm;
         private Form hiddenForm;
 
-        public App()
+        public App(USB_Comm usbComm)
         {
-            InitializeComponents();
+            InitializeComponents(usbComm);
             RunApplication();
         }
 
-        private void InitializeComponents()
+        private void InitializeComponents(USB_Comm usbComm)
         {
             PWman = new PWMan();
             loginForm = new Login();
@@ -37,6 +37,7 @@ namespace WindowsApp
             PWman.FormClosed += (sender, e) => Application.Exit();
             loginForm.FormClosed += (sender, e) => Application.Exit();
             hiddenForm.FormClosed += (sender, e) => Application.Exit();
+            PWman.FormClosed += usbComm.Program_FormClosed;
         }
 
         private void RunApplication()
@@ -54,7 +55,11 @@ namespace WindowsApp
                 loginForm.Show();
             }
 
-            Application.Run(hiddenForm);
+            try
+            {
+                Application.Run(hiddenForm);
+            }
+            catch { }
         }
 
         private static string LoadUserEmail(string filePath)

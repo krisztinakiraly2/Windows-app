@@ -73,6 +73,7 @@
             newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
             newToolStripMenuItem.Size = new Size(175, 26);
             newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
@@ -112,7 +113,7 @@
             // 
             // dataGridViewPasswords
             // 
-            dataGridViewPasswords.AllowUserToOrderColumns = true;
+            dataGridViewPasswords.AllowUserToAddRows = false;
             dataGridViewPasswords.BackgroundColor = Color.FromArgb(30, 30, 30);
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 30, 30);

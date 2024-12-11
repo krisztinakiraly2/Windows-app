@@ -1,0 +1,7 @@
+﻿- Pressing escape when editing kills the program hard
+	- Dont have any clue why or how to fix
+	- Made a try catch block so it at least exits the program instead of standing on the exeption
+- Exiting the program when editing a row makes a check that is not needed
+	- A simple flag didnt solve the problem
+	- Overriding the close function still causes the message to show
+	- No clue how to fix
