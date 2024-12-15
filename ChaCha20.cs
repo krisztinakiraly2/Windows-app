@@ -11,7 +11,6 @@ namespace WindowsApp
 
     public class ChaCha20
     {
-        // ChaCha20 constant (expand 32-byte k)
         private static readonly byte[] ChaCha20Constant = "expand 32-byte k"u8.ToArray();
 
         private static uint RotateLeft(uint value, int bits)
@@ -32,7 +31,6 @@ namespace WindowsApp
             uint[] workingState = new uint[16];
             Array.Copy(state, workingState, 16);
 
-            // 10 rounds of ChaCha20
             for (int i = 0; i < 10; i++)
             {
                 QuarterRound(ref workingState[0], ref workingState[4], ref workingState[8], ref workingState[12]);
@@ -45,13 +43,11 @@ namespace WindowsApp
                 QuarterRound(ref workingState[3], ref workingState[4], ref workingState[9], ref workingState[14]);
             }
 
-            // Add the original state values
             for (int i = 0; i < 16; i++)
             {
                 workingState[i] += state[i];
             }
 
-            // Pack the result into the keystream
             Buffer.BlockCopy(workingState, 0, keystream, 0, 64);
         }
 
@@ -78,23 +74,19 @@ namespace WindowsApp
             uint[] state = new uint[16];
             byte[] keystream = new byte[64];
 
-            // Initialize the state
             InitState(key, nonce, counter, state);
 
             byte[] result = new byte[data.Length];
 
             for (int i = 0; i < data.Length; i += 64)
             {
-                // Generate a new keystream block
                 GenerateBlock(state, keystream);
 
-                // XOR the data with the keystream
                 for (int j = 0; j < 64 && (i + j) < data.Length; j++)
                 {
                     result[i + j] = (byte)(data[i + j] ^ keystream[j]);
                 }
 
-                // Increment the counter
                 state[12]++;
                 if (state[12] == 0)
                 {

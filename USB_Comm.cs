@@ -58,10 +58,8 @@ namespace WindowsApp
 
         public USB_Comm() 
         {
-            // TODO: send to uC ()
             currentLanguage = InputLanguage.CurrentInputLanguage;
             name = currentLanguage.Culture.Name;
-            // "hu-HU" or "en-GB"
 
             domain_params = new ECDomainParameters(ecParams);
             generator.Init(new ECKeyGenerationParameters(domain_params, new SecureRandom()));
@@ -201,15 +199,6 @@ namespace WindowsApp
                         agreement.Init(key_pair.Private);
                         shared_secret = agreement.CalculateAgreement(stm32_public_key);
                         shared_secret_bytes = shared_secret.ToByteArrayUnsigned();
-
-                        /*first = 1;
-                        foreach (byte b in my_public_key_bytes)
-                        {
-                            if (first == 1)
-                                ++first;
-                            else
-                                serial_port.Write(new[] { (char)b }, 0, 1);
-                        }*/
 
                         byte[] short_pk = new byte[64];
                         for (int i = 0; i < short_pk.Length; i++)

@@ -10,16 +10,10 @@ namespace WindowsApp
 
         public static string projectFolderPath = Directory.GetParent(d1).FullName;
 
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            
+            ApplicationConfiguration.Initialize();   
             USB_Comm usbComm = new USB_Comm();
             _ = new App(usbComm);
         }

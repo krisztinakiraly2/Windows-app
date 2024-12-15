@@ -236,15 +236,12 @@
 
             if (dataGridViewPasswords.Columns[e.ColumnIndex].Name == IsSelected && e.RowIndex >= 0)
             {
-                // Commit the edit (to reflect the change in the cell's value)
                 dataGridViewPasswords.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
-                // Get the current state of the clicked cell
                 bool isSelected = (bool)dataGridViewPasswords.Rows[e.RowIndex].Cells[IsSelected].Value;
 
                 if (isSelected)
                 {
-                    // Unselect all other rows
                     foreach (DataGridViewRow row in dataGridViewPasswords.Rows)
                     {
                         if (row.Index != e.RowIndex)
@@ -366,7 +363,7 @@
 
         private static bool IsValidWebsite(string website)
         {
-            return website.Contains(".com") || website.Contains(".hu");
+            return website.Contains(".com") || website.Contains(".hu") || website.Contains(".org") || website.Contains(".wiki");
         }
 
         private bool IsRowFullyFilled(DataGridViewRow row)

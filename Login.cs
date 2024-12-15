@@ -209,7 +209,6 @@ namespace WindowsApp
                 using (File.Create(filePath)) { }
             }
 
-            // TODO: implement some encrypting so user data cant be stolen
             using (StreamWriter writer = new StreamWriter(filePath, append: true))
             {
                 writer.Write("name: "+name_su.Text+"\nemail: "+email_su.Text+"\nusername: "+username_su.Text +"\npassword: "+password_su.Text +"\n\n");
